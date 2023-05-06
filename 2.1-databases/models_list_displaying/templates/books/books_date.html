@@ -10,11 +10,19 @@
         <div class="row">
             {% for book in books %}
             <div class="book col-md-4">
-                <a href="{{ book.pub_date|date:'Y-m-d' }}"><h2>{{ book.name }}</h2></a>
+                <a href=""><h2>{{ book.name }}</h2></a>
                 <p>Автор: {{ book.author}}</p>
                 <p>Дата публикации: {{ book.pub_date|date:'Y-m-d' }}</p>
+
+                {% if prev %}
+                    <a href="{% url 'books_date' prev %}">{{ prev }}</a>
+                {% endif %}
+                {% if next %}
+                    <a href="{% url 'books_date' next %}">{{ next }}</a>
+                {% endif %}
             </div>
             {% endfor %}
+
         </div>
     </div>
 {% endblock %}
