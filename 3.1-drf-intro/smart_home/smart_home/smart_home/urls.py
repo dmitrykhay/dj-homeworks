@@ -1,7 +1,7 @@
-"""api_with_restrictions URL Configuration
+"""smart_home URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,16 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework.routers import DefaultRouter
-
-from advertisements.views import AdvertisementViewSet
-
-router = DefaultRouter()
-# TODO: подключите `AdvertisementViewSet`
-router.register('advertisements', AdvertisementViewSet)
-
-
 urlpatterns = [
-    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('api/', include('measurement.urls')),  # подключаем маршруты из приложения measurement
 ]
